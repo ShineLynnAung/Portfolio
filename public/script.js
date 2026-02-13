@@ -28,6 +28,14 @@ const contactForm = document.querySelector(".contact-form");
 const formNote = document.querySelector(".form-note");
 
 if (contactForm && formNote) {
+  const emailjsPublicKey = "P9RcPiZ8R4YHRacnj";
+  const emailjsServiceId = "service_z18dogo";
+  const emailjsTemplateId = "template_sfkhzci";
+
+  if (window.emailjs) {
+    window.emailjs.init({ publicKey: emailjsPublicKey });
+  }
+
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -41,15 +49,11 @@ if (contactForm && formNote) {
     formNote.textContent = "Sending...";
 
     try {
-      const response = await fetch("/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        throw new Error("Send failed");
+      if (!window.emailjs) {
+        throw new Error("EmailJS not loaded");
       }
+
+      await window.emailjs.send(emailjsServiceId, emailjsTemplateId, payload);
 
       formNote.textContent = "Message sent. Thank you!";
       contactForm.reset();
