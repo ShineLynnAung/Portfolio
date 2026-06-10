@@ -271,11 +271,16 @@ button {
 
 .about-grid,
 .skills-grid,
-.projects-grid,
 .snapshot-grid {
   display: grid;
   gap: 22px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.projects-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .about-card,
@@ -324,6 +329,26 @@ button {
   background: rgba(98, 208, 255, 0.15);
   color: var(--accent-2);
   margin-bottom: 12px;
+}
+
+.project-tag.tag-bot {
+  background: rgba(242, 143, 59, 0.15);
+  color: var(--accent);
+}
+
+.project-tag.tag-automation {
+  background: rgba(98, 208, 255, 0.15);
+  color: var(--accent-2);
+}
+
+.project-tag.tag-public {
+  background: rgba(98, 208, 255, 0.15);
+  color: var(--accent-2);
+}
+
+.project-tag.tag-mobile {
+  background: rgba(242, 143, 59, 0.15);
+  color: var(--accent);
 }
 
 .project-meta {
